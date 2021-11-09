@@ -1,0 +1,61 @@
+.contact-list_cont {
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 0.5rem;
+    width: 70%;
+    margin: 1rem auto;
+    color: grey;
+}
+
+.contact-list_cont:hover {
+    background-color: #ddd;
+}
+
+.contact-list_head {
+    font-size: 2.5rem;
+    margin: 1.5rem 0;
+    text-align: center;
+    color: grey;
+}
+
+.load-text {
+    text-align: center;
+    color: grey;
+}
+
+.btn-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.edit-btn {
+    background-color: #ccc;
+}
+
+.del-btn {
+    background-color: red;
+}
+
+.del-btn, .edit-btn {
+    padding: 0.4rem 0.75rem;
+    margin: 0.5rem;
+    border: none;
+    color: grey;
+    text-decoration: none;
+    border-radius: 0.3rem;
+}
+
+.del-btn:hover, .edit-btn:hover {
+    opacity: 0.8;
+    color: rgb(78, 78, 78);
+}
+
+.Modal-cont {
+    display: flex;
+    min-height: 90vh;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,0 +1,14 @@
+.form-cont {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.form-head {
+    text-align: center;
+    font-style: 2.5rem;
+    color: grey;
+    margin: 1.5rem;
+}

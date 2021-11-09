@@ -1,0 +1,19 @@
+.link-cont {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.link {
+    text-decoration: none;
+    color: grey;
+    background-color: #ccc;
+    padding: 0.5rem 1rem;
+    margin: 1rem;
+    transition: all 0.3s;
+    border-radius: 0.5rem;
+    font-weight: bold;
+}
+
+.link:hover {
+    color: rgb(82, 81, 81);
+}
