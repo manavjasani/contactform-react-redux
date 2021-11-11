@@ -24,18 +24,39 @@ const Form = ({data}) => {
 
     const nameChangeHandler = (e) => {
         setNameVal(() => e.target.value);
+        setNameError('');
     }
 
     const emailChangeHandler = (e) => {
         setEmailVal(() => e.target.value);
+        setEmailError('');
     }
 
     const ageChangeHandler = (e) => {
         setAgeVal(() => e.target.value);
+        setAgeError('');
     }
 
     const contactChangeHandler = (e) => {
         setContactVal(() => e.target.value);
+        setContactError('');
+    }
+
+    const formValidate = () => {
+        let isValid = false;
+
+        if (!nameVal) {
+            setNameError('Name is require !')
+        } else if (!emailVal) {
+            setEmailError('Email is require !')
+        } else if (!ageVal) {
+            setAgeError('Age is require !')
+        } else if (!contactVal) {
+            setContactError('Contact is require !')
+        } else {
+            isValid = true;
+        }
+        return isValid;
     }
 
     const submitHandler = (e) => {
@@ -115,22 +136,7 @@ const Form = ({data}) => {
         }
     }
 
-    const formValidate = () => {
-        let isValid = false;
-
-        if (!nameVal) {
-            setNameError('Name is require !')
-        } else if (!emailVal) {
-            setEmailError('Email is require !')
-        } else if (!ageVal) {
-            setAgeError('Age is require !')
-        } else if (!contactVal) {
-            setContactError('Contact is require !')
-        } else {
-            isValid = true;
-        }
-        return isValid;
-    }
+    
     // let disable = true;
 
     // let formValid = "";
@@ -148,7 +154,7 @@ const Form = ({data}) => {
         <div>
             <div className="form-child">
                 <input type="text" placeholder="Enter Your Name" value={nameVal} onChange={nameChangeHandler} required />
-                {nameError && <span>{nameError}</span>} 
+                {nameError ? <span>{nameError}</span> : ''} 
                 <input type="email" placeholder="Enter Your Email" value={emailVal} onChange={emailChangeHandler} required />
                 {emailError && <span>{emailError}</span>}
                 <input type="number" placeholder="Age" value={ageVal} onChange={ageChangeHandler} required />

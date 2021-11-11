@@ -1,14 +1,19 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Modal from '../../Modal/Modal';
-// import Form from '../../Form/Form';
+import { useDispatch } from 'react-redux';
 import "./Listpage.css";
+import { deleteAction } from '../../../store/actions/submitList';
+import { useNavigate } from 'react-router-dom';
 
 const Listpage = () => {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [formDetail, setFormDetail] = useState(false);
     const [editDetail, setEditDetail] = useState(null);
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get('https://contact-list-3fa22-default-rtdb.firebaseio.com/condata.json')
@@ -34,8 +39,10 @@ const Listpage = () => {
     }
 
     const deleteItemHandler = (id) => {
-        const remItem = data.filter((item) => item.id !== id)
-        setData(remItem);
+        // const remItem = data.filter((item) => item.id !== id)
+        // setData(remItem);
+        dispatch(deleteAction(id))
+        navigate('/')
     }
 
     const editItemHandler = (item) => {
@@ -67,7 +74,6 @@ const Listpage = () => {
                             </div>
                         </div>
             })}
-            
             
         </div>
     )

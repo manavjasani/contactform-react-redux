@@ -29,10 +29,13 @@ export const submitDataSlice = createSlice({
         },
         updatePost: (state, action) => {
             state.contactForm = action.payload
+        },
+        deletePost: (state, action) => {
+            state.contactForm = action.payload
         }
     }
 })
 
-export const { submitPost, updatePost } = submitDataSlice.actions;
+export const { submitPost, updatePost, deletePost } = submitDataSlice.actions;
 
 export default submitDataSlice.reducer;
