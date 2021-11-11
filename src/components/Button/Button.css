@@ -1,0 +1,8 @@
+.submit-btn {
+    display: block;
+    text-align: center;
+    width: 10rem;
+    margin: 0.75rem auto;
+    padding: 0.5rem 0.75rem;
+    color: grey;
+}

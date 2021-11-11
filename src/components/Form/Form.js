@@ -4,7 +4,7 @@ import "./Form.css";
 import Button from '../Button/Button';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
-import { submitAction } from '../../store/actions/submitList';
+import { submitAction, updateAction } from '../../store/actions/submitList';
 
 const Form = ({data}) => {
     // console.log(props.data);
@@ -79,25 +79,34 @@ const Form = ({data}) => {
     }
 
     const updateChangeHandler = () => {
-        axios.put(`https://contact-list-3fa22-default-rtdb.firebaseio.com/condata/${data.id}.json`, {
-            name: nameVal,
-            email: emailVal,
-            age: ageVal,
-            contact: contactVal
-        }).then(res => {
-            console.log('update', res)
-            alert('Successfully Updated !')
-            setNameVal('');
-            setEmailVal('');
-            setAgeVal('');
-            setContactVal('');
-            navigate('/listpage')
-        }).catch(err => {
-            alert('Update Failed !')
-            console.log(err)
-        });
-
+        // axios.put(`https://contact-list-3fa22-default-rtdb.firebaseio.com/condata/${data.id}.json`, {
+        //     name: nameVal,
+        //     email: emailVal,
+        //     age: ageVal,
+        //     contact: contactVal
+        // }).then(res => {
+        //     console.log('update', res)
+        //     alert('Successfully Updated !')
+        //     setNameVal('');
+        //     setEmailVal('');
+        //     setAgeVal('');
+        //     setContactVal('');
+        //     navigate('/listpage')
+        // }).catch(err => {
+        //     alert('Update Failed !')
+        //     console.log(err)
+        // });
+        
         formValidate();
+        if (formValidate()) {
+            dispatch(updateAction({data: {
+                name: nameVal,
+                email: emailVal,
+                age: ageVal,
+                contact: contactVal
+            }, id: data.id}))
+            navigate('/');
+        }
     }
 
     const formValidate = () => {
@@ -132,11 +141,14 @@ const Form = ({data}) => {
         
         <div>
             <div className="form-child">
-                {nameError ? <span>{nameError}</span> : <input type="text" placeholder="Enter Your Name" value={nameVal} onChange={nameChangeHandler} required />}
-                
+                <input type="text" placeholder="Enter Your Name" value={nameVal} onChange={nameChangeHandler} required />
+                {nameError && <span>{nameError}</span>} 
                 <input type="email" placeholder="Enter Your Email" value={emailVal} onChange={emailChangeHandler} required />
+                {emailError && <span>{emailError}</span>}
                 <input type="number" placeholder="Age" value={ageVal} onChange={ageChangeHandler} required />
+                {ageError && <span>{ageError}</span>}
                 <input type="text" placeholder="Contact Number" value={contactVal} onChange={contactChangeHandler} required />
+                {contactError && <span>{contactError}</span>}
                 {!data ?  <Button submitHandler={submitHandler} /> : <Button submitHandler={updateChangeHandler} />}
             </div>
         </div>

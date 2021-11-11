@@ -1,10 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// export const submitDataSlice = createSlice({
-//         name: 'update',
-//         initialState,
+// const startState = {
+
+// }
+
+// export const updateDataSlice = createSlice({
+//         name: 'updateHandler',
+//         startState,
 //         reducers: {
-//             submitPost: (state, action) => {
+//             updatePost: (state, action) => {
 //                 state.contactForm = action.payload
 //             }
 //         }
@@ -22,10 +26,13 @@ export const submitDataSlice = createSlice({
     reducers: {
         submitPost: (state, action) => {
             state.contactForm = action.payload
+        },
+        updatePost: (state, action) => {
+            state.contactForm = action.payload
         }
     }
 })
 
-export const { submitPost } = submitDataSlice.actions;
+export const { submitPost, updatePost } = submitDataSlice.actions;
 
 export default submitDataSlice.reducer;
