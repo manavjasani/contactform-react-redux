@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import "./Form.css";
 import Button from '../Button/Button';
 import { useNavigate } from "react-router-dom";
@@ -21,7 +20,6 @@ const Form = ({data}) => {
     const [ageError, setAgeError] = useState('');
     const [contactVal, setContactVal] = useState(data ? data.data.contact : '');
     const [contactError, setContactError] = useState('');
-    // const [isValid, setIsValid] = useState(false);
     
 
     const nameChangeHandler = (e) => {
@@ -43,8 +41,6 @@ const Form = ({data}) => {
     const submitHandler = (e) => {
         e.preventDefault();
 
-       
-
         formValidate();
         if(formValidate()) {
             // console.log('true');
@@ -54,10 +50,15 @@ const Form = ({data}) => {
                 age: ageVal,
                 contact: contactVal
             }))
+            navigate('/listpage')
+            alert('Successfully Added !');
+            setNameVal('');
+            setEmailVal('');
+            setAgeVal('');
+            setContactVal('');
         }
         
         // console.log(nameVal,emailVal, ageVal, contactVal );
-
     //     axios.post('https://contact-list-3fa22-default-rtdb.firebaseio.com/condata.json', {
     //             name: nameVal,
     //             email: emailVal,
@@ -105,7 +106,12 @@ const Form = ({data}) => {
                 age: ageVal,
                 contact: contactVal
             }, id: data.id}))
-            navigate('/');
+            navigate('/')
+            alert('Successfully Updated !')
+            setNameVal('');
+            setEmailVal('');
+            setAgeVal('');
+            setContactVal('');
         }
     }
 

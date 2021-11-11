@@ -1,6 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 export const submitAction = createAsyncThunk('submitHandler', async (obj) => {
         console.log(obj)
