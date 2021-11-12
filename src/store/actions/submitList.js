@@ -14,7 +14,7 @@ export const submitAction = createAsyncThunk('submitHandler', async (obj) => {
       }
 );
 
-export const updateAction = createAsyncThunk('updateHandler', async(obj) => {
+export const updateAction = createAsyncThunk('submitHandler', async(obj) => {
       console.log('updateobj', obj);
 
       const response = await axios.put(`https://contact-list-3fa22-default-rtdb.firebaseio.com/condata/${obj.id}.json`, obj.data);
@@ -26,7 +26,7 @@ export const updateAction = createAsyncThunk('updateHandler', async(obj) => {
       return response.data;
 })
 
-export const deleteAction = createAsyncThunk('deleteHandler', async(id) => {
+export const deleteAction = createAsyncThunk('submitHandler', async(id) => {
   
   console.log(id);
       const response = await axios.delete(`https://contact-list-3fa22-default-rtdb.firebaseio.com/condata/${id}.json`);
@@ -40,5 +40,5 @@ export const deleteAction = createAsyncThunk('deleteHandler', async(id) => {
       // }
 
       // console.log(dataArr);
-      return response;
+      return response.data;
 })

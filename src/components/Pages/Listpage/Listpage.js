@@ -50,7 +50,6 @@ const Listpage = () => {
         setEditDetail(item)
     }
 
-
     return (
         <div>
             <h1 className="contact-list_head">Contact-list</h1>
